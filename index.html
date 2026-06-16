@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo HTML Semântico & Acessível | Guia WCAG 2.2 AA</title>
+    <meta name="description" content="Um guia prático e auto-explicativo sobre HTML semântico e acessibilidade seguindo a WCAG 2.2 Nível AA.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 
+        WCAG 2.2 - Critério 2.4.1 (Bypass Blocks)
+        O 'Skip Link' permite que usuários de teclado pulem a navegação repetitiva 
+        e vão direto para o conteúdo principal.
+    -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!--
+        O elemento <header> como filho direto do <body> já possui a role implícita 
+        "banner" (ARIA in HTML). Adicionar role="banner" seria redundante e viola 
+        a Regra 1 de ARIA: "Prefira semântica nativa".
+    -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <strong>A11y Toolkit</strong>
+            </div>
+            <nav aria-label="Navegação Principal">
+                <ul>
+                    <li><a href="#texto">Texto</a></li>
+                    <li><a href="#midia">Mídia</a></li>
+                    <li><a href="#tabelas">Tabelas</a></li>
+                    <li><a href="#formularios">Formulários</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <!-- 
+            WCAG 2.2 - Critério 1.3.1 (Info and Relationships)
+            O <h1> é o título principal e deve ser único por página, definindo o tema central.
+        -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title">Por que Acessibilidade é o seu Superpoder como Desenvolvedor?</h1>
+                <p>
+                    Acessibilidade não é apenas uma lista de tarefas ou uma obrigação legal. É sobre design inclusivo. 
+                    Este template foi criado para ser um <strong>guia prático</strong>. Cada seção abaixo explica sua própria existência 
+                    e como você pode aplicar esses conceitos para criar uma web mais justa e tecnicamente superior.
+                </p>
+                <div class="cta-group">
+                    <a href="#texto" class="btn btn-primary">Começar a Aprender</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================
+             SEÇÃO: TEXTO E SEMÂNTICA
+             Critérios WCAG 2.2: 1.3.1 (Info and Relationships), 
+             3.1.2 (Language of Parts)
+             ====================================================== -->
+        <section id="texto" class="section-content" aria-labelledby="texto-title">
+            <div class="container">
+                <h2 id="texto-title">Hierarquia de Texto e Semântica</h2>
+                <p>
+                    O <abbr title="HyperText Markup Language" lang="en">HTML</abbr> semântico vai muito além 
+                    de simplesmente exibir texto na tela. Cada elemento carrega um <em>significado</em> que 
+                    tecnologias assistivas — como leitores de tela — utilizam para transmitir a estrutura 
+                    e a intenção do conteúdo ao usuário.
+                </p>
+
+                <!-- Subseção: Hierarquia de Headings -->
+                <h3>Headings: a espinha dorsal da navegação</h3>
+                <p>
+                    Leitores de tela permitem que usuários naveguem por 
+                    <em lang="en">headings</em> (cabeçalhos) como se fossem um sumário interativo. 
+                    Por isso, a hierarquia deve ser rigorosa: nunca pule de 
+                    <code>&lt;h2&gt;</code> para <code>&lt;h4&gt;</code> sem passar pelo 
+                    <code>&lt;h3&gt;</code>. Cada nível cria uma subdivisão lógica do conteúdo.
+                </p>
+
+                <!-- Subseção: Elementos semânticos de texto -->
+                <h3>Elementos semânticos de texto</h3>
+                <p>
+                    Observe como diferentes elementos transmitem diferentes intenções:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Importância:</strong> O elemento <code>&lt;strong&gt;</code> indica 
+                        que o conteúdo tem <strong>alta importância</strong>. Já o <code>&lt;b&gt;</code> 
+                        apenas destaca visualmente, sem semântica adicional.
+                    </li>
+                    <li>
+                        <strong>Ênfase:</strong> O elemento <code>&lt;em&gt;</code> aplica 
+                        <em>ênfase vocal</em> — um leitor de tela pode alterar a entonação. 
+                        Já o <code>&lt;i&gt;</code> é apenas visual (itálico).
+                    </li>
+                    <li>
+                        <strong>Abreviações:</strong> Use <code>&lt;abbr&gt;</code> para expandir siglas. 
+                        Exemplo: a <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 
+                        é mantida pelo <abbr title="World Wide Web Consortium" lang="en">W3C</abbr>.
+                    </li>
+                    <li>
+                        <strong>Código:</strong> O elemento <code>&lt;code&gt;</code> identifica 
+                        fragmentos de código como <code>aria-label</code>.
+                    </li>
+                    <li>
+                        <strong>Datas:</strong> O elemento <code>&lt;time&gt;</code> fornece datas 
+                        legíveis por máquina: a 
+                        <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 
+                        foi publicada em 
+                        <time datetime="2024-12-12">12 de dezembro de 2024</time>.
+                    </li>
+                    <li>
+                        <strong>Destaque:</strong> Use <code>&lt;mark&gt;</code> para 
+                        <mark>destacar trechos relevantes</mark> em contexto, como resultados de busca.
+                    </li>
+                </ul>
+
+                <!-- Subseção: Citações -->
+                <h3>Citações e atribuição</h3>
+                <blockquote cite="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
+                    <p>
+                        <span lang="en">"The power of the Web is in its universality. Access by 
+                        everyone regardless of disability is an essential aspect."</span>
+                    </p>
+                </blockquote>
+                <p>
+                    — <cite lang="en">Tim Berners-Lee</cite>, criador da 
+                    <span lang="en">World Wide Web</span>
+                </p>
+                <p>
+                    O elemento <code>&lt;blockquote&gt;</code> marca uma citação em bloco, enquanto 
+                    <code>&lt;cite&gt;</code> identifica o título de uma obra ou o nome da fonte. 
+                    O atributo <code>cite</code> (no elemento) fornece a 
+                    <abbr title="Uniform Resource Locator" lang="en">URL</abbr> da fonte 
+                    para fins de rastreabilidade.
+                </p>
+
+                <!-- Subseção: Listas semânticas -->
+                <h3>Listas: estrutura que comunica</h3>
+                <p>
+                    Leitores de tela anunciam o tipo e o número de itens de uma lista, dando contexto 
+                    imediato ao usuário. Os quatro princípios da 
+                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 
+                    formam o acrônimo <strong lang="en">POUR</strong>:
+                </p>
+                <ol>
+                    <li><strong lang="en">Perceivable</strong> — Perceptível: o conteúdo deve ser apresentável aos sentidos.</li>
+                    <li><strong lang="en">Operable</strong> — Operável: a interface deve funcionar por teclado e outros meios.</li>
+                    <li><strong lang="en">Understandable</strong> — Compreensível: o conteúdo deve ser legível e previsível.</li>
+                    <li><strong lang="en">Robust</strong> — Robusto: o conteúdo deve funcionar com tecnologias assistivas atuais e futuras.</li>
+                </ol>
+
+                <h3>Glossário de termos</h3>
+                <p>
+                    A lista de definições (<code>&lt;dl&gt;</code>) é ideal para glossários e 
+                    pares de termo-valor:
+                </p>
+                <dl class="glossary">
+                    <div>
+                        <dt lang="en">Screen Reader</dt>
+                        <dd>Software que converte conteúdo digital em fala ou Braille, permitindo que pessoas cegas ou com baixa visão acessem a web.</dd>
+                    </div>
+                    <div>
+                        <dt lang="en">Landmark</dt>
+                        <dd>Região de referência na página (como <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>) que permite navegação rápida por leitores de tela.</dd>
+                    </div>
+                    <div>
+                        <dt lang="en">Focus Indicator</dt>
+                        <dd>Indicador visual que mostra qual elemento interativo está selecionado pelo teclado. Essencial para usuários que não utilizam mouse.</dd>
+                    </div>
+                    <div>
+                        <dt><abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr></dt>
+                        <dd>Conjunto de atributos que complementam o <abbr title="HyperText Markup Language" lang="en">HTML</abbr> para melhorar a acessibilidade de conteúdo dinâmico e componentes de interface customizados.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ======================================================
+             SEÇÃO: MÍDIA
+             Critério WCAG 2.2: 1.1.1 (Non-text Content)
+             ====================================================== -->
+        <section id="midia" class="section-content" aria-labelledby="midia-title">
+            <div class="container">
+                <h2 id="midia-title">Mídia e Descrição de Imagens</h2>
+                <p>
+                    Imagens precisam de descrições textuais (<code>alt</code>) para que usuários cegos compreendam o contexto. 
+                    Se a imagem for apenas decorativa, o atributo <code>alt=""</code> deve ser usado para que o leitor de tela a ignore.
+                </p>
+
+                <div class="media-example">
+                    <figure>
+                        <!--
+                            Imagem de exemplo embutida como SVG (data URI), sem dependência
+                            de serviços externos. O atributo alt descreve o conteúdo visual
+                            para quem usa leitor de tela (WCAG 1.1.1).
+                        -->
+                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='600'%20height='300'%20viewBox='0%200%20600%20300'%3E%3Crect%20width='600'%20height='300'%20fill='%23005a9c'/%3E%3Ctext%20x='300'%20y='150'%20fill='%23ffffff'%20font-family='sans-serif'%20font-size='28'%20font-weight='bold'%20text-anchor='middle'%20dominant-baseline='middle'%3EExemplo%20de%20Imagem%20Acess%C3%ADvel%3C/text%3E%3C/svg%3E"
+                             width="600" height="300"
+                             alt="Retângulo azul com o texto 'Exemplo de Imagem Acessível' centralizado em branco.">
+                        <figcaption>Figura 1: Exemplo de como usar o elemento <code>&lt;figcaption&gt;</code> para dar contexto adicional.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================
+             SEÇÃO: TABELAS
+             Critérios WCAG 2.2: 1.3.1 (Info and Relationships), 
+             1.4.10 (Reflow)
+             ====================================================== -->
+        <section id="tabelas" class="section-content" aria-labelledby="tabelas-title">
+            <div class="container">
+                <h2 id="tabelas-title">Tabelas de Dados Acessíveis</h2>
+                <p>
+                    Tabelas devem ser usadas <strong>exclusivamente para dados tabulares</strong>, nunca para 
+                    layout. O elemento <code>&lt;caption&gt;</code> dá nome à tabela (funcionando como 
+                    um título acessível), enquanto <code>&lt;th&gt;</code> com o atributo 
+                    <code>scope</code> associa cabeçalhos às células de dados — permitindo que leitores de 
+                    tela anunciem o cabeçalho relevante ao navegar entre células.
+                </p>
+
+                <h3>Estrutura recomendada</h3>
+                <p>
+                    Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> e opcionalmente 
+                    <code>&lt;tfoot&gt;</code> para agrupar semanticamente as linhas da tabela. 
+                    Cada cabeçalho de coluna recebe <code>scope="col"</code> e cada cabeçalho 
+                    de linha recebe <code>scope="row"</code>.
+                </p>
+
+                <!--
+                    O container com overflow-x: auto garante que a tabela 
+                    seja acessível em telas pequenas sem quebrar o layout.
+                    WCAG 1.4.10 (Reflow) — Conteúdo que inerentemente requer 
+                    layout bidimensional (como tabelas) é uma exceção aceita, 
+                    desde que o scroll seja possível.
+                -->
+                <div class="table-container">
+                    <table>
+                        <caption>Critérios <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 implementados neste site</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Critério</th>
+                                <th scope="col">Nível</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Como foi aplicado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1.1.1</th>
+                                <td>A</td>
+                                <td lang="en">Non-text Content</td>
+                                <td>Atributo <code>alt</code> descritivo em todas as imagens.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1.3.1</th>
+                                <td>A</td>
+                                <td lang="en">Info and Relationships</td>
+                                <td>Tags semânticas (<code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;h1&gt;</code>–<code>&lt;h3&gt;</code>).</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1.3.5</th>
+                                <td>AA</td>
+                                <td lang="en">Identify Input Purpose</td>
+                                <td>Atributo <code>autocomplete</code> nos campos de nome e e-mail.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1.4.3</th>
+                                <td>AA</td>
+                                <td lang="en">Contrast (Minimum)</td>
+                                <td>Paleta de cores com contraste mínimo de 4.5:1 para texto.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1.4.10</th>
+                                <td>AA</td>
+                                <td lang="en">Reflow</td>
+                                <td>Layout responsivo com suporte a zoom de até 400%.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2.4.1</th>
+                                <td>A</td>
+                                <td lang="en">Bypass Blocks</td>
+                                <td><em lang="en">Skip link</em> no topo da página.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2.4.7</th>
+                                <td>AA</td>
+                                <td lang="en">Focus Visible</td>
+                                <td>Indicador de foco de duas camadas (<code>outline</code> + <code>box-shadow</code>) com contraste ≥ 3:1 em qualquer fundo.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2.5.8</th>
+                                <td>AA</td>
+                                <td lang="en">Target Size (Minimum)</td>
+                                <td>Mínimo AA é 24×24px; aqui botões e links usam 44×44px e o checkbox 24×24px.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3.1.1</th>
+                                <td>A</td>
+                                <td lang="en">Language of Page</td>
+                                <td>Atributo <code>lang="pt-BR"</code> no <code>&lt;html&gt;</code>.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3.1.2</th>
+                                <td>AA</td>
+                                <td lang="en">Language of Parts</td>
+                                <td>Atributo <code>lang="en"</code> em termos técnicos em inglês.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3.3.2</th>
+                                <td>A</td>
+                                <td lang="en">Labels or Instructions</td>
+                                <td><code>&lt;label&gt;</code> associado, instrução de campos obrigatórios e atributo <code>required</code>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================
+             SEÇÃO: FORMULÁRIOS
+             Critérios WCAG 2.2: 1.3.1, 1.3.5, 2.5.8, 3.3.2
+             ====================================================== -->
+        <section id="formularios" class="section-content" aria-labelledby="formularios-title">
+            <div class="container">
+                <h2 id="formularios-title">Interação e Formulários Acessíveis</h2>
+                <p>
+                    Formulários são pontos críticos de acessibilidade. Cada campo precisa de um <code>&lt;label&gt;</code> 
+                    associado via <code>id</code>. Grupos de campos relacionados devem ser envolvidos em um 
+                    <code>&lt;fieldset&gt;</code> com uma <code>&lt;legend&gt;</code>.
+                </p>
+
+                <!--
+                    novalidate: desliga as "bolhas" nativas do navegador para que o
+                    script.js assuma a validação com mensagens acessíveis. Sem JS, basta
+                    remover este atributo que a validação nativa volta a funcionar — por
+                    isso os atributos `required`/`type="email"` permanecem no HTML.
+                -->
+                <form class="accessible-form" action="#" method="post" novalidate>
+                    <!--
+                        WCAG 3.3.2 (Labels or Instructions)
+                        A instrução abaixo explica o significado do asterisco antes que
+                        o usuário comece a preencher. O atributo nativo `required` faz o
+                        leitor de tela anunciar "obrigatório"; por isso o `*` visual é
+                        marcado com aria-hidden para não gerar leitura duplicada.
+                    -->
+                    <p class="form-instructions" id="form-required-note">
+                        Campos marcados com <span class="req" aria-hidden="true">*</span> são obrigatórios.
+                    </p>
+
+                    <fieldset>
+                        <legend>Informações de Contato</legend>
+
+                        <div class="form-group">
+                            <label for="nome">Nome Completo <span class="req" aria-hidden="true">*</span></label>
+                            <!--
+                                WCAG 1.3.5 (Identify Input Purpose)
+                                O atributo autocomplete="name" permite que o navegador
+                                e tecnologias assistivas identifiquem o propósito do campo.
+                            -->
+                            <!--
+                                WCAG 3.3.1 (Error Identification): aria-describedby aponta
+                                tanto para a dica quanto para a mensagem de erro. O erro fica
+                                num <span role="alert"> vazio: ao receber texto via JS, o leitor
+                                de tela anuncia automaticamente (WCAG 4.1.3 Status Messages).
+                            -->
+                            <input type="text" id="nome" name="nome"
+                                   required
+                                   autocomplete="name"
+                                   aria-describedby="nome-help nome-error">
+                            <span id="nome-help" class="help-text">Insira seu nome como aparece no documento.</span>
+                            <span id="nome-error" class="error-text" role="alert"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo <span class="req" aria-hidden="true">*</span></label>
+                            <input type="email" id="email" name="email"
+                                   required
+                                   autocomplete="email"
+                                   aria-describedby="email-help email-error">
+                            <span id="email-help" class="help-text">Exemplo: nome@empresa.com.br</span>
+                            <span id="email-error" class="error-text" role="alert"></span>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Preferências de Comunicação</legend>
+                        <div class="form-group-inline">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Desejo receber novidades sobre acessibilidade.</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <!--
+                            Critério 2.5.8 - Target Size
+                            O botão de envio terá uma área de toque confortável.
+                        -->
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </div>
+
+                    <!--
+                        WCAG 4.1.3 (Status Messages): região de status para a confirmação
+                        de envio. aria-live="polite" anuncia a mensagem sem roubar o foco.
+                    -->
+                    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 - Criado com foco em acessibilidade (<abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 AA).</p>
+        </div>
+    </footer>
+
+    <!--
+        Progressive enhancement: a página é totalmente funcional sem este script
+        (validação nativa do navegador). Com ele, os erros são exibidos inline e
+        anunciados por leitores de tela (WCAG 3.3.1, 3.3.3 e 4.1.3).
+    -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Logs e dependências (caso o projeto cresça)
+node_modules/
+npm-debug.log*
+*.log

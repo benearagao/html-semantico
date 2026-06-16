@@ -1,0 +1,559 @@
+/* 
+    Variáveis CSS para facilitar a manutenção e garantir consistência de contraste.
+    WCAG 2.2 - Critério 1.4.3 (Contrast Minimum)
+*/
+:root {
+    --primary-color: #005a9c; /* Azul com bom contraste sobre branco */
+    --text-color: #1a1a1a;
+    --bg-color: #ffffff;
+    --focus-outline: #ff8c00;
+    --container-width: 1000px;
+    --spacing: 1.5rem;
+    --border-color: #ddd;
+    --surface-color: #f4f4f4;
+    --surface-alt-color: #f9f9f9;
+}
+
+/* Reset básico focado em acessibilidade */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6; /* WCAG 1.4.12: Espaçamento de linha adequado */
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing);
+}
+
+/* 
+    Skip Link
+    Inicialmente escondido, mas visível ao receber foco.
+*/
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Header & Nav */
+.main-header {
+    background: var(--surface-color);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+nav a:hover {
+    background-color: rgba(0, 90, 156, 0.08);
+}
+
+/*
+    Critério 2.4.7 (Focus Visible) / 2.4.11 (Focus Not Obscured) / 2.4.13 (Focus Appearance)
+    Foco com indicador de DUAS camadas: o contorno laranja garante contraste sobre
+    fundos escuros (ex.: botões azuis) e o halo escuro (box-shadow) garante o
+    contraste mínimo de 3:1 sobre fundos claros (ex.: o corpo branco da página).
+    Assim pelo menos uma camada sempre contrasta ≥ 3:1 com qualquer fundo.
+*/
+a:focus,
+button:focus,
+input:focus,
+input:focus-visible,
+[tabindex="0"]:focus {
+    outline: 3px solid var(--focus-outline);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/*
+    O <main id="main-content" tabindex="-1"> é apenas alvo programático do skip link.
+    Não deve receber o contorno de foco gigante ao redor de todo o conteúdo.
+*/
+#main-content:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 0;
+    background: #eef6fc;
+    border-bottom: 1px solid #d0e3f0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+}
+
+/* Content Sections */
+.section-content {
+    padding: 3rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+h3 {
+    margin: 2rem 0 1rem;
+    color: #333;
+}
+
+/* =============================================
+   ESTILOS: Seção Texto & Semântica
+   ============================================= */
+
+/* Abreviações */
+abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    cursor: help;
+}
+
+/* Citação em bloco */
+blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    margin: 1.5rem 0;
+    background: var(--surface-alt-color);
+    border-radius: 0 6px 6px 0;
+}
+
+blockquote p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #333;
+}
+
+/* Elemento <mark> - destaque semântico
+   WCAG 1.4.3: fundo amarelo (#fff3cd) com texto escuro garante contraste ≥ 4.5:1 */
+mark {
+    background-color: #fff3cd;
+    color: #1a1a1a;
+    padding: 0.15em 0.35em;
+    border-radius: 3px;
+}
+
+/* Código inline */
+/* WCAG 1.4.3: #8a1538 sobre #f0f0f0 tem contraste ≈ 7:1 (antes #c7254e ≈ 4.4:1, no limite) */
+code {
+    font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: #f0f0f0;
+    color: #8a1538;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* Elemento <time> */
+time {
+    font-weight: 500;
+}
+
+/* Listas dentro das seções */
+.section-content ul,
+.section-content ol {
+    margin: 1rem 0 1.5rem 2rem;
+}
+
+.section-content li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+/* Lista de definições (glossário) */
+.glossary {
+    margin: 1.5rem 0;
+}
+
+.glossary > div {
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--primary-color);
+    margin-bottom: 1rem;
+    background: var(--surface-alt-color);
+    border-radius: 0 6px 6px 0;
+}
+
+.glossary dt {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.glossary dd {
+    margin-left: 0;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* =============================================
+   ESTILOS: Seção Mídia
+   ============================================= */
+
+.media-example {
+    margin: 2rem 0;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+figcaption {
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* =============================================
+   ESTILOS: Seção Tabelas
+   ============================================= */
+
+.table-container {
+    overflow-x: auto; /* Garante que a tabela não quebre o layout em telas pequenas */
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background: #fff;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    text-align: left;
+    color: var(--primary-color);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    background-color: #f8f8f8;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* =============================================
+   ESTILOS: Seção Formulários
+   ============================================= */
+
+.accessible-form {
+    background: var(--surface-alt-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 2rem;
+}
+
+fieldset {
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.help-text {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.25rem;
+}
+
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* WCAG 2.5.8 (Target Size Minimum): mínimo de 24×24px para o alvo de toque/clique */
+.form-group-inline input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Indicação de campo obrigatório (WCAG 3.3.2). #b3261e sobre branco ≈ 5:1 */
+.req {
+    color: #b3261e;
+    font-weight: 700;
+}
+
+.form-instructions {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Mensagem de erro inline (WCAG 3.3.1). #b3261e sobre #f9f9f9 ≈ 4.9:1.
+   Vazia por padrão; o JS injeta o texto. :empty evita margem fantasma. */
+.error-text {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #b3261e;
+}
+
+.error-text:empty {
+    margin-top: 0;
+}
+
+/* O símbolo ⚠ reforça o erro sem depender só da cor (WCAG 1.4.1 Use of Color) */
+.error-text:not(:empty)::before {
+    content: "⚠ ";
+}
+
+/* Campo inválido: borda vermelha além da mensagem (não depende só de cor) */
+input[aria-invalid="true"] {
+    border-color: #b3261e !important;
+}
+
+/* Região de status do envio (WCAG 4.1.3) */
+.form-status {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status.is-success {
+    background: #e6f4ea;
+    color: #1b5e20;        /* sobre #e6f4ea ≈ 7:1 */
+    border: 1px solid #1b5e20;
+}
+
+.form-status.is-error {
+    background: #fdeaea;
+    color: #b3261e;        /* sobre #fdeaea ≈ 5:1 */
+    border: 1px solid #b3261e;
+}
+
+.form-actions {
+    margin-top: 1rem;
+}
+
+button {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* =============================================
+   ESTILOS: Footer
+   ============================================= */
+
+.main-footer {
+    padding: 2rem 0;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    margin-top: 0;
+}
+
+/* =============================================
+   ESTILOS: Botões (Target Size)
+   WCAG 2.5.8 - Target Size (Minimum)
+   Elementos interativos com área mínima de 44×44px.
+   ============================================= */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    min-width: 44px;
+    min-height: 44px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #004a80;
+}
+
+/* =============================================
+   RESPONSIVIDADE
+   WCAG 1.4.10 (Reflow) - Suporte a 320px
+   ============================================= */
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    .main-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        gap: 0.75rem;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"] {
+        max-width: 100%;
+    }
+
+    .accessible-form {
+        padding: 1rem;
+    }
+
+    fieldset {
+        padding: 1rem;
+    }
+
+    blockquote {
+        padding: 1rem 1rem 1rem 1.25rem;
+    }
+}
+
+/* =============================================
+   MOVIMENTO REDUZIDO
+   WCAG 2.3.3 (Animation from Interactions)
+   Respeita a preferência do sistema de quem sente
+   desconforto vestibular com animações.
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
