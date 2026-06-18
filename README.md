@@ -1,6 +1,39 @@
-# A11y Toolkit: Modelo HTML Semântico & Acessível (WCAG 2.2 AA)
+# A11y Toolkit
 
-Este projeto é um **guia prático e auto-explicativo** desenvolvido para ajudar UX/UI Designers e Desenvolvedores a implementarem acessibilidade real em seus projetos web. 
+> Guia prático e auto-explicativo de HTML Semântico e Acessibilidade Web seguindo WCAG 2.2 AA.
+
+🔗 **Página ao vivo:** https://benearagao.github.io/html-semantico/  
+📚 **Glossário completo:** https://benearagao.github.io/html-semantico/glossario.html
+
+## O que é
+
+Este projeto é um modelo de referência aberto, voltado para devs front-end que querem aprofundar em acessibilidade — desde o básico de HTML semântico até a aplicação prática de critérios WCAG 2.2 nível AA. O próprio site é exemplo de si mesmo: implementa os critérios que documenta.
+
+## O que cobre
+
+- ✅ Hierarquia semântica de texto (headings, listas, citações, código, tempo)
+- ✅ Mídia acessível (imagens descritivas, figcaption)
+- ✅ Tabelas de dados com `<caption>`, `<thead>`, `scope`
+- ✅ Formulários acessíveis (`<fieldset>`, `<legend>`, `<label>`, `autocomplete`, `aria-describedby`)
+- ✅ Landmarks, skip link, indicador de foco de duas camadas
+- ✅ Glossário completo de termos de HTML semântico e a11y
+- ✅ Links curados para normas (WCAG, LBI, NBR 17225, eMAG) e ferramentas (Axe, WAVE, Lighthouse, NVDA)
+
+## Como usar
+
+Clone, forke, adapte ao seu projeto. As decisões estão documentadas em comentários inline no código — leia o `index.html` como se fosse um livro.
+
+Se encontrar algo a melhorar, abra uma issue ou um PR. É assim que a gente cresce.
+
+## Autor
+
+Bené Aragão — Designer Sênior de Produto, certificado pelo W3Cx em Web Accessibility (WAI0.1x). [LinkedIn](https://linkedin.com/in/benearagao) · [Currículo](https://benearagao.com.br)
+
+---
+
+## Detalhes técnicos
+
+Este projeto é um **guia prático e auto-explicativo** desenvolvido para ajudar UX/UI Designers e Desenvolvedores a implementarem acessibilidade real em seus projetos web.
 
 Em vez de apenas listar regras, o conteúdo desta página explica sua própria estrutura técnica e a importância de cada escolha semântica.
 
@@ -24,6 +57,7 @@ Este template cobre diversos critérios fundamentais, incluindo os novos da vers
 
 ## 📂 Estrutura do Projeto
 - `index.html`: Estrutura semântica documentada com comentários educativos.
+- `glossario.html`: Glossário expandido de HTML semântico e acessibilidade, navegável por letra.
 - `style.css`: Estilização focada em legibilidade, contraste e estados de foco.
 - `script.js`: Validação de formulário acessível como *progressive enhancement* (a página funciona sem JS).
 
