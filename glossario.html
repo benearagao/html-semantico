@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossário | A11y Toolkit</title>
+    <meta name="description" content="Glossário de HTML semântico e acessibilidade web: termos essenciais para devs front-end, alinhado à WCAG 2.2 Nível AA.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- WCAG 2.2 - Critério 2.4.1 (Bypass Blocks): mesmo skip link da home. -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <strong>A11y Toolkit</strong>
+            </div>
+            <nav aria-label="Navegação Principal">
+                <ul>
+                    <li><a href="index.html">← Voltar para a página inicial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title">Glossário de HTML Semântico e Acessibilidade</h1>
+                <p>
+                    Termos essenciais para devs front-end que querem aprofundar em acessibilidade web.
+                    Definições curtas e práticas, com referência aos conceitos da
+                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2.
+                </p>
+            </div>
+        </section>
+
+        <!-- Índice por letra: navegação interna por âncoras (WCAG 2.4.5 Multiple Ways). -->
+        <nav class="glossary-index" aria-label="Índice do glossário">
+            <div class="container">
+                <h2>Navegar por letra</h2>
+                <ul class="letter-nav">
+                    <li><a href="#a">A</a></li>
+                    <li><a href="#b">B</a></li>
+                    <li><a href="#c">C</a></li>
+                    <li><a href="#e">E</a></li>
+                    <li><a href="#f">F</a></li>
+                    <li><a href="#h">H</a></li>
+                    <li><a href="#k">K</a></li>
+                    <li><a href="#l">L</a></li>
+                    <li><a href="#n">N</a></li>
+                    <li><a href="#p">P</a></li>
+                    <li><a href="#r">R</a></li>
+                    <li><a href="#s">S</a></li>
+                    <li><a href="#t">T</a></li>
+                    <li><a href="#v">V</a></li>
+                    <li><a href="#w">W</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- ===== A ===== -->
+        <section id="a" class="section-content" aria-labelledby="a-heading">
+            <div class="container">
+                <h2 id="a-heading">A</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt><abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr> (Accessible Rich Internet Applications)</dt>
+                        <dd>Conjunto de atributos que complementam o <abbr title="HyperText Markup Language" lang="en">HTML</abbr> para descrever papéis, estados e propriedades de componentes de interface dinâmicos. A primeira regra do <abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr> é: prefira sempre a semântica nativa do <abbr title="HyperText Markup Language" lang="en">HTML</abbr> antes de adicionar <abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr>.</dd>
+                    </div>
+                    <div>
+                        <dt><code>aria-label</code></dt>
+                        <dd>Define um nome acessível para um elemento quando não há texto visível que o nomeie. Útil em botões que contêm apenas ícones, por exemplo.</dd>
+                    </div>
+                    <div>
+                        <dt><code>aria-labelledby</code></dt>
+                        <dd>Aponta para o <code>id</code> de outro elemento que serve como rótulo. Permite reaproveitar texto já visível na página em vez de duplicá-lo.</dd>
+                    </div>
+                    <div>
+                        <dt><code>aria-describedby</code></dt>
+                        <dd>Associa um elemento a um texto descritivo complementar (uma dica ou mensagem de erro). O leitor de tela anuncia essa descrição após o rótulo.</dd>
+                    </div>
+                    <div>
+                        <dt><code>aria-live</code> (regiões dinâmicas)</dt>
+                        <dd>Informa às tecnologias assistivas que uma região terá conteúdo atualizado dinamicamente. Os valores <code>polite</code> (anuncia ao terminar a fala atual) e <code>assertive</code> (interrompe) controlam a urgência.</dd>
+                    </div>
+                    <div>
+                        <dt><code>aria-current</code></dt>
+                        <dd>Indica o item atual dentro de um conjunto — por exemplo, a página atual em um menu (<code>aria-current="page"</code>) ou a etapa atual em um fluxo.</dd>
+                    </div>
+                    <div>
+                        <dt><code>alt</code> (atributo)</dt>
+                        <dd>Texto alternativo de uma imagem (<code>&lt;img&gt;</code>). Descreve o conteúdo visual para quem não pode vê-lo. Em imagens puramente decorativas, use <code>alt=""</code> para que o leitor de tela as ignore.</dd>
+                    </div>
+                    <div>
+                        <dt><abbr title="Assistive Technology" lang="en">AT</abbr> (Assistive Technology)</dt>
+                        <dd>Tecnologia assistiva: qualquer software ou hardware que ajuda pessoas com deficiência a usar o computador — leitores de tela, ampliadores, teclados adaptados, controle por voz, entre outros.</dd>
+                    </div>
+                    <div>
+                        <dt>Axe DevTools</dt>
+                        <dd>Extensão de navegador da Deque que audita automaticamente uma página contra critérios <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>, apontando violações e sugerindo correções.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== B ===== -->
+        <section id="b" class="section-content" aria-labelledby="b-heading">
+            <div class="container">
+                <h2 id="b-heading">B</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Breadcrumb (semântica)</dt>
+                        <dd>Trilha de navegação que mostra a posição da página dentro da hierarquia do site. Semanticamente, usa-se uma <code>&lt;nav&gt;</code> com <code>aria-label</code> e uma lista ordenada (<code>&lt;ol&gt;</code>), marcando a página atual com <code>aria-current="page"</code>.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== C ===== -->
+        <section id="c" class="section-content" aria-labelledby="c-heading">
+            <div class="container">
+                <h2 id="c-heading">C</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt><abbr title="Completely Automated Public Turing test to tell Computers and Humans Apart" lang="en">CAPTCHA</abbr> acessível</dt>
+                        <dd>Mecanismo anti-robô que não depende exclusivamente de reconhecer imagens ou texto distorcido. Alternativas acessíveis incluem desafios não visuais, validação por comportamento e tokens invisíveis, evitando barreiras a quem usa leitor de tela.</dd>
+                    </div>
+                    <div>
+                        <dt>Contraste de cor (mínimo, AA, AAA)</dt>
+                        <dd>Relação de luminância entre texto e fundo. A <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> exige no mínimo 4.5:1 para texto normal e 3:1 para texto grande no nível AA; o nível AAA sobe para 7:1 e 4.5:1, respectivamente.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== E ===== -->
+        <section id="e" class="section-content" aria-labelledby="e-heading">
+            <div class="container">
+                <h2 id="e-heading">E</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt><abbr title="Modelo de Acessibilidade em Governo Eletrônico">eMAG</abbr> (Modelo de Acessibilidade em Governo Eletrônico)</dt>
+                        <dd>Conjunto de recomendações brasileiro voltado a sites e portais do governo. Padroniza a aplicação de acessibilidade na administração pública, alinhado aos princípios da <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== F ===== -->
+        <section id="f" class="section-content" aria-labelledby="f-heading">
+            <div class="container">
+                <h2 id="f-heading">F</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Focus Indicator (indicador de foco)</dt>
+                        <dd>Marca visual que mostra qual elemento interativo está atualmente focado pelo teclado. É essencial para quem navega sem mouse e deve ter contraste suficiente para ser percebido em qualquer fundo.</dd>
+                    </div>
+                    <div>
+                        <dt>Focus Order (ordem de foco)</dt>
+                        <dd>Sequência em que os elementos recebem foco ao pressionar <kbd>Tab</kbd>. Deve seguir uma ordem lógica e previsível, normalmente coincidente com a ordem de leitura do conteúdo.</dd>
+                    </div>
+                    <div>
+                        <dt>Focus Trap</dt>
+                        <dd>Situação em que o foco do teclado fica preso em uma área e não consegue sair. É um bug grave — exceto quando intencional e gerenciado, como dentro de um modal aberto, de onde o foco só deve sair ao fechá-lo.</dd>
+                    </div>
+                    <div>
+                        <dt>Form Validation acessível</dt>
+                        <dd>Validação de formulário que comunica erros por texto (não só por cor), associa a mensagem ao campo via <code>aria-describedby</code>, marca o campo com <code>aria-invalid</code> e anuncia o erro por uma região <code>role="alert"</code>.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== H ===== -->
+        <section id="h" class="section-content" aria-labelledby="h-heading">
+            <div class="container">
+                <h2 id="h-heading">H</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Heading hierarchy (hierarquia de cabeçalhos)</dt>
+                        <dd>Estrutura lógica dos títulos <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>. Cada página tem um único <code>&lt;h1&gt;</code> e os níveis descem sem saltos. Leitores de tela usam essa hierarquia como um sumário navegável.</dd>
+                    </div>
+                    <div>
+                        <dt><abbr title="HyperText Markup Language" lang="en">HTML</abbr> Semântico</dt>
+                        <dd>Uso de elementos que descrevem o significado do conteúdo (<code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;button&gt;</code>) em vez de elementos genéricos (<code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>). É a base da acessibilidade: a semântica nativa já entrega papéis e comportamentos às tecnologias assistivas.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== K ===== -->
+        <section id="k" class="section-content" aria-labelledby="k-heading">
+            <div class="container">
+                <h2 id="k-heading">K</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Keyboard Navigation (navegação por teclado)</dt>
+                        <dd>Capacidade de operar toda a interface usando apenas o teclado — <kbd>Tab</kbd> para avançar, <kbd>Shift</kbd>+<kbd>Tab</kbd> para voltar, <kbd>Enter</kbd> e <kbd>Espaço</kbd> para acionar. Requisito do critério <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.1.1.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== L ===== -->
+        <section id="l" class="section-content" aria-labelledby="l-heading">
+            <div class="container">
+                <h2 id="l-heading">L</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Landmark (region, role)</dt>
+                        <dd>Região de referência da página que permite pulos rápidos por leitores de tela. Elementos como <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code> e <code>&lt;footer&gt;</code> geram landmarks automaticamente.</dd>
+                    </div>
+                    <div>
+                        <dt>Lei Brasileira de Inclusão (<abbr title="Lei Brasileira de Inclusão">LBI</abbr>)</dt>
+                        <dd>Lei 13.146/2015. Em seu Art. 63, torna obrigatória a acessibilidade de sites na internet para uso da pessoa com deficiência, garantindo acesso à informação no Brasil.</dd>
+                    </div>
+                    <div>
+                        <dt>Live Region</dt>
+                        <dd>Região marcada com <code>aria-live</code> (ou papéis como <code>status</code> e <code>alert</code>) cujas atualizações são anunciadas automaticamente pela tecnologia assistiva, sem que o usuário precise mover o foco até ela.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== N ===== -->
+        <section id="n" class="section-content" aria-labelledby="n-heading">
+            <div class="container">
+                <h2 id="n-heading">N</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt><abbr title="Norma Brasileira">NBR</abbr> 17225</dt>
+                        <dd>Norma da <abbr title="Associação Brasileira de Normas Técnicas">ABNT</abbr> publicada em 2025: a primeira norma brasileira oficial de acessibilidade em conteúdo e aplicações web, que consolida requisitos técnicos alinhados às diretrizes internacionais.</dd>
+                    </div>
+                    <div>
+                        <dt><abbr title="NonVisual Desktop Access" lang="en">NVDA</abbr> (leitor de tela)</dt>
+                        <dd>Leitor de tela gratuito e open-source para Windows, mantido pela NV Access. É amplamente usado em testes de acessibilidade por ser gratuito e popular entre usuários reais.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== P ===== -->
+        <section id="p" class="section-content" aria-labelledby="p-heading">
+            <div class="container">
+                <h2 id="p-heading">P</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt><abbr title="Perceivable, Operable, Understandable, Robust" lang="en">POUR</abbr> (Perceivable, Operable, Understandable, Robust)</dt>
+                        <dd>Os quatro princípios que estruturam a <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>: o conteúdo deve ser <strong>perceptível</strong>, <strong>operável</strong>, <strong>compreensível</strong> e <strong>robusto</strong>. Todos os critérios derivam de um desses pilares.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== R ===== -->
+        <section id="r" class="section-content" aria-labelledby="r-heading">
+            <div class="container">
+                <h2 id="r-heading">R</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Reflow (critério <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2)</dt>
+                        <dd>Critério 1.4.10: o conteúdo deve se reorganizar para caber em uma única coluna a 320 <abbr title="Cascading Style Sheets, pixels CSS">CSS px</abbr> de largura (ou zoom de 400%), sem exigir rolagem horizontal — exceto conteúdos que dependem de layout bidimensional, como tabelas.</dd>
+                    </div>
+                    <div>
+                        <dt>Roles <abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr></dt>
+                        <dd>Papéis que descrevem o que um elemento é ou faz (por exemplo, <code>role="dialog"</code>, <code>role="tab"</code>). Devem ser usados apenas quando não existe um elemento <abbr title="HyperText Markup Language" lang="en">HTML</abbr> nativo equivalente.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== S ===== -->
+        <section id="s" class="section-content" aria-labelledby="s-heading">
+            <div class="container">
+                <h2 id="s-heading">S</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Screen Reader (leitor de tela)</dt>
+                        <dd>Software que converte o conteúdo digital em fala ou Braille, permitindo que pessoas cegas ou com baixa visão naveguem pela web. Exemplos: <abbr title="NonVisual Desktop Access" lang="en">NVDA</abbr>, JAWS, VoiceOver e TalkBack.</dd>
+                    </div>
+                    <div>
+                        <dt>Skip Link</dt>
+                        <dd>Link no topo da página que permite pular blocos repetitivos (como o menu) e ir direto ao conteúdo principal. Atende ao critério <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.4.1 (Bypass Blocks).</dd>
+                    </div>
+                    <div>
+                        <dt><code>scope</code> (atributo em <code>&lt;th&gt;</code>)</dt>
+                        <dd>Atributo que associa um cabeçalho de tabela às suas células. <code>scope="col"</code> indica cabeçalho de coluna e <code>scope="row"</code>, de linha — assim o leitor de tela anuncia o cabeçalho correto ao navegar pelos dados.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== T ===== -->
+        <section id="t" class="section-content" aria-labelledby="t-heading">
+            <div class="container">
+                <h2 id="t-heading">T</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>Target Size (tamanho mínimo de alvo)</dt>
+                        <dd>Critério <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.5.8: alvos de toque/clique devem ter ao menos 24×24 <abbr title="Cascading Style Sheets, pixels CSS">CSS px</abbr> no nível AA (com exceções). Uma área maior, como 44×44px, reduz erros de quem tem controle motor reduzido.</dd>
+                    </div>
+                    <div>
+                        <dt>TalkBack (Android)</dt>
+                        <dd>Leitor de tela nativo do sistema Android, do Google. É a principal tecnologia assistiva para testar acessibilidade de páginas e apps em dispositivos móveis Android.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== V ===== -->
+        <section id="v" class="section-content" aria-labelledby="v-heading">
+            <div class="container">
+                <h2 id="v-heading">V</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt>VoiceOver (macOS/iOS)</dt>
+                        <dd>Leitor de tela nativo dos sistemas da Apple. No iPhone e iPad é a tecnologia assistiva padrão para testar acessibilidade móvel em ambiente Apple.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===== W ===== -->
+        <section id="w" class="section-content" aria-labelledby="w-heading">
+            <div class="container">
+                <h2 id="w-heading">W</h2>
+                <dl class="glossary">
+                    <div>
+                        <dt><abbr title="Web Accessibility Initiative" lang="en">WAI</abbr> (Web Accessibility Initiative)</dt>
+                        <dd>Iniciativa do <abbr title="World Wide Web Consortium" lang="en">W3C</abbr> dedicada à acessibilidade web. Produz diretrizes, materiais educativos e especificações como a <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> e o <abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr>.</dd>
+                    </div>
+                    <div>
+                        <dt><abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> (Web Content Accessibility Guidelines)</dt>
+                        <dd>Diretrizes internacionais de acessibilidade para conteúdo web, organizadas em três níveis de conformidade (A, AA e AAA). A versão 2.2 é a recomendação atual do <abbr title="World Wide Web Consortium" lang="en">W3C</abbr>.</dd>
+                    </div>
+                    <div>
+                        <dt><abbr title="World Wide Web Consortium" lang="en">W3C</abbr> (World Wide Web Consortium)</dt>
+                        <dd>Consórcio internacional que desenvolve os padrões abertos da web, incluindo <abbr title="HyperText Markup Language" lang="en">HTML</abbr>, <abbr title="Cascading Style Sheets" lang="en">CSS</abbr> e as diretrizes de acessibilidade mantidas pela <abbr title="Web Accessibility Initiative" lang="en">WAI</abbr>.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 - Criado com foco em acessibilidade (<abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 AA).</p>
+        </div>
+    </footer>
+</body>
+</html>
