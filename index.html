@@ -32,6 +32,7 @@
                     <li><a href="#midia">Mídia</a></li>
                     <li><a href="#tabelas">Tabelas</a></li>
                     <li><a href="#formularios">Formulários</a></li>
+                    <li><a href="glossario.html">Glossário</a></li>
                 </ul>
             </nav>
         </div>
@@ -52,6 +53,109 @@
                 </p>
                 <div class="cta-group">
                     <a href="#texto" class="btn btn-primary">Começar a Aprender</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================
+             SEÇÃO: RECURSOS E REFERÊNCIAS
+             Layout em duas colunas com CSS Grid (auto-fit), que
+             empilha naturalmente em telas pequenas sem media query.
+             Critérios WCAG 2.2: 1.4.11 (Non-text Contrast, borda dos
+             cards ≥ 3:1) e 2.4.4 (Link Purpose).
+             ====================================================== -->
+        <section class="section-content recursos" aria-labelledby="recursos-heading">
+            <div class="container">
+                <h2 id="recursos-heading">Recursos para aprofundar</h2>
+                <p>
+                    Normas, leis e ferramentas para quem quer ir além do básico.
+                    Os links abaixo abrem em nova aba.
+                </p>
+                <div class="recursos-grid">
+                    <!--
+                        Cada coluna é um <article> independente (conteúdo
+                        autossuficiente), nomeado pelo seu próprio <h3>.
+                    -->
+                    <article aria-labelledby="normas-heading">
+                        <h3 id="normas-heading">Normas e legislação</h3>
+                        <ul class="link-list">
+                            <li>
+                                <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 (<abbr title="World Wide Web Consortium" lang="en">W3C</abbr>)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Diretrizes internacionais de acessibilidade web (em inglês).</span>
+                            </li>
+                            <li>
+                                <a href="https://www.w3c.br/traducoes/wcag/wcag22-pt-BR/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 em português (<abbr title="World Wide Web Consortium" lang="en">W3C</abbr> Brasil)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Tradução oficial mantida pelo <abbr title="World Wide Web Consortium" lang="en">W3C</abbr> Brasil.</span>
+                            </li>
+                            <li>
+                                <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm" target="_blank" rel="noopener noreferrer">
+                                    Lei Brasileira de Inclusão (<abbr title="Lei Brasileira de Inclusão">LBI</abbr> 13.146/2015), Art. 63<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Estabelece a obrigatoriedade de acessibilidade em sites no Brasil.</span>
+                            </li>
+                            <li>
+                                <a href="https://cta.ifrs.edu.br/abnt-nbr-17225-2025-acessibilidade-em-conteudo-e-aplicacoes-web-requisitos/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Associação Brasileira de Normas Técnicas">ABNT</abbr> <abbr title="Norma Brasileira">NBR</abbr> 17225/2025<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Primeira norma brasileira oficial de acessibilidade web (resumo técnico do <abbr title="Instituto Federal do Rio Grande do Sul">IFRS</abbr>).</span>
+                            </li>
+                            <li>
+                                <a href="https://emag.governoeletronico.gov.br/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Modelo de Acessibilidade em Governo Eletrônico">eMAG</abbr><span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Modelo brasileiro de acessibilidade para sites governamentais.</span>
+                            </li>
+                        </ul>
+                    </article>
+                    <article aria-labelledby="ferramentas-heading">
+                        <h3 id="ferramentas-heading">Ferramentas de teste</h3>
+                        <ul class="link-list">
+                            <li>
+                                <a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer">
+                                    Axe DevTools (Deque)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Extensão de navegador para auditoria automática <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>.</span>
+                            </li>
+                            <li>
+                                <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Web Accessibility Evaluation Tool" lang="en">WAVE</abbr> (WebAIM)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Avaliador online visual de acessibilidade.</span>
+                            </li>
+                            <li>
+                                <a href="https://developer.chrome.com/docs/lighthouse/accessibility/" target="_blank" rel="noopener noreferrer">
+                                    Lighthouse (Chrome DevTools)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Auditoria integrada ao Chrome DevTools.</span>
+                            </li>
+                            <li>
+                                <a href="https://www.nvaccess.org/download/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="NonVisual Desktop Access" lang="en">NVDA</abbr> (leitor de tela gratuito)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Leitor de tela open-source para Windows.</span>
+                            </li>
+                            <li>
+                                <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">
+                                    Contrast Checker (WebAIM)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Verificador de contraste de cores conforme <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>.</span>
+                            </li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
@@ -177,6 +281,13 @@
                         <dd>Conjunto de atributos que complementam o <abbr title="HyperText Markup Language" lang="en">HTML</abbr> para melhorar a acessibilidade de conteúdo dinâmico e componentes de interface customizados.</dd>
                     </div>
                 </dl>
+                <!-- Esta é apenas uma amostra. O glossário completo vive em página própria. -->
+                <p class="glossary-cta">
+                    <a href="glossario.html">
+                        Ver glossário completo com todos os termos
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </p>
             </div>
         </section>
 
