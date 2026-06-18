@@ -1,7 +1,8 @@
 # Validação de Acessibilidade — A11y Toolkit
 
-> Relatório do teste **real** (não apenas revisão estática) da página `index.html`.
-> Data: **16/06/2026** · Padrão alvo: **WCAG 2.2 Nível AA**
+> Relatório do teste **real** (não apenas revisão estática) das páginas `index.html`
+> e `glossario.html`.
+> Data: **18/06/2026** · Padrão alvo: **WCAG 2.2 Nível AA**
 
 Este documento registra o que foi efetivamente testado, com que ferramentas e quais
 resultados — para consulta futura e para deixar claro o que ainda depende de
@@ -11,14 +12,20 @@ verificação humana (leitor de tela).
 
 ## Resumo
 
-| Camada de teste | Ferramenta | Resultado |
-|---|---|---|
-| Automatizado (WCAG A/AA + best-practice) | axe-core em Chromium real (Playwright) | ✅ **0 violações**, 52 regras OK, 0 incompletos |
-| Contraste de cor | Cálculo de luminância relativa (WCAG 2.x) | ✅ **22/22 pares de texto passam** |
-| Teclado (ordem de Tab, foco visível, skip link) | Playwright (navegação real) | ✅ 10 elementos, foco visível em todos, sem armadilha |
-| Reflow / zoom 400% | Viewport 320px | ✅ Sem scroll horizontal na página |
-| Validação de formulário | Playwright (submit + ARIA) | ✅ Erros acessíveis, foco no 1º inválido, status anunciado |
-| **Leitor de tela (VoiceOver/NVDA)** | — | ⚠️ **Pendente** — exige verificação humana |
+| Camada de teste | Ferramenta | `index.html` | `glossario.html` |
+|---|---|---|---|
+| Automatizado (WCAG A/AA + best-practice) | axe-core em Chromium real (Playwright) | ✅ **0 violações**, 52 regras OK, 1 incompleto* | ✅ **0 violações**, 34 regras OK, 0 incompletos |
+| Contraste de cor | Cálculo de luminância relativa (WCAG 2.x) | ✅ Todos os pares passam AA | ✅ Todos os pares passam AA |
+| Teclado (ordem de Tab, foco visível, skip link) | Playwright (navegação real) | ✅ 22 elementos, foco visível em todos, sem armadilha | ✅ 17 elementos, foco visível em todos, sem armadilha |
+| Reflow / zoom 400% | Viewport 320px | ✅ Sem scroll horizontal | ✅ Sem scroll horizontal |
+| Validação de formulário | Playwright (submit + ARIA) | ✅ Erros acessíveis, foco no 1º inválido, status anunciado | — (sem formulário) |
+| **Leitor de tela (VoiceOver/NVDA)** | — | ⚠️ **Pendente** — exige verificação humana | ⚠️ **Pendente** — exige verificação humana |
+
+> \* O único "incompleto" do `index.html` é o `<span aria-hidden="true">→</span>`
+> decorativo do link "Ver glossário completo": o axe não computa contraste de um
+> elemento cujo conteúdo é só um caractere não-textual e o marca para revisão. Como
+> a seta é decorativa (`aria-hidden`) e o link tem texto completo ao lado, **não é
+> uma violação** — é um falso-positivo esperado.
 
 ---
 
@@ -28,21 +35,26 @@ Rodado com `@axe-core/playwright` num **Chromium real** (não jsdom), com as tag
 `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice`.
 
 ```
-Violações: 0
-Incompletos: nenhum
-Regras OK: 52
+index.html      → Violações: 0 · Incompletos: 1 (color-contrast, ver nota) · Regras OK: 52
+glossario.html  → Violações: 0 · Incompletos: 0                            · Regras OK: 34
 ```
 
-> Observação: numa primeira passada em **jsdom** (sem renderização) apareciam 3
-> "incompletos" — `color-contrast`, `landmark-one-main` e `page-has-heading-one`.
-> Isso era limitação do jsdom, que não computa layout/visibilidade. No Chromium real
-> os três se resolvem (a página tem um `<main>` e um `<h1>` únicos, e o contraste é
-> calculado corretamente).
+O único incompleto no `index.html` é o seletor
+`a[href$="glossario.html"] > span[aria-hidden="true"]` (a seta `→` decorativa do
+link para o glossário completo). O motivo reportado pelo axe é *"Element content
+contains only non-text characters"* — ele não roda contraste num elemento que só tem
+símbolo. Sendo decorativa e marcada com `aria-hidden`, é um falso-positivo esperado,
+não violação.
+
+> Observação: numa passada em **jsdom** (sem renderização) aparecem "incompletos"
+> extras — `color-contrast`, `landmark-one-main`, `page-has-heading-one` — por
+> limitação do jsdom, que não computa layout/visibilidade. No Chromium real eles se
+> resolvem (cada página tem um `<main>` e um `<h1>` únicos e o contraste é calculado).
 
 ## 2. Contraste — calculado de verdade
 
 Antes o contraste fora estimado "no papel"; aqui foi recalculado por luminância
-relativa para cada par cor/fundo usado no CSS. **Todos os 22 pares de texto passam
+relativa para cada par cor/fundo usado no CSS. **Todos os pares de texto passam
 no mínimo AA (4.5:1)**, a maioria com folga:
 
 | Par | Razão | Mín. |
@@ -54,6 +66,14 @@ no mínimo AA (4.5:1)**, a maioria com folga:
 | Status de erro (`#b3261e` / `#fdeaea`) | 5,64:1 | 4,5 |
 | Status de sucesso (`#1b5e20` / `#e6f4ea`) | 6,93:1 | 4,5 |
 | Rodapé (`#ffffff` / `#333333`) | 12,63:1 | 4,5 |
+| Descrição dos links de recursos (`#444444` / `#ffffff`) | 9,74:1 | 4,5 |
+
+Pares **não-texto** novos da seção "Recursos" e do índice do glossário (mín. 3:1 —
+critério 1.4.11):
+
+| Par | Razão | Mín. (não-texto) |
+|---|---|---|
+| Borda dos cards / botões de letra (`#767676` / `#ffffff`) | 4,54:1 | 3,0 |
 
 ### Indicador de foco em duas camadas (2.4.7 / 2.4.11 / 2.4.13)
 
@@ -69,14 +89,28 @@ laranja cobre o caso do botão azul. Sempre há uma camada ≥ 3:1 em qualquer f
 
 ## 3. Teclado
 
-Navegação só por teclado (Tab/Shift+Tab/Enter), ordem real capturada pelo navegador:
+Navegação só por teclado (Tab/Shift+Tab/Enter), ordem real capturada pelo navegador.
 
-1. Pular para o conteúdo principal (skip link)
-2. Texto · 3. Mídia · 4. Tabelas · 5. Formulários (nav)
-6. Começar a Aprender (CTA)
-7. Nome · 8. E-mail · 9. Newsletter · 10. Enviar Mensagem
+**`index.html` — 22 elementos:**
 
-- **Foco visível em todos os 10** elementos interativos.
+1. Skip link
+2–6. Nav: Texto · Mídia · Tabelas · Formulários · **Glossário**
+7. Começar a Aprender (CTA)
+8–12. Recursos — coluna "Normas": WCAG · WCAG pt-BR · LBI · NBR 17225 · eMAG
+13–17. Recursos — coluna "Ferramentas": Axe · WAVE · Lighthouse · NVDA · Contrast Checker
+18. Ver glossário completo (link inline)
+19. Nome · 20. E-mail · 21. Newsletter · 22. Enviar Mensagem
+
+A ordem de Tab segue a leitura: termina a coluna esquerda dos recursos antes de
+entrar na direita, como o critério 2.4.3 (Focus Order) espera.
+
+**`glossario.html` — 17 elementos:**
+
+1. Skip link · 2. ← Voltar para a página inicial · 3–17. Índice por letra (A…W)
+
+Em ambas as páginas:
+
+- **Foco visível em todos** os elementos interativos.
 - Ordem de Tab **igual à ordem visual**.
 - **Sem armadilha de teclado.**
 - **Skip link funciona**: 1º Tab o revela (`href="#main-content"`) e `Enter` move o
@@ -86,9 +120,12 @@ Navegação só por teclado (Tab/Shift+Tab/Enter), ordem real capturada pelo nav
 
 A 320px de largura (equivalente a zoom de ~400% numa tela de 1280px):
 
-- **Sem scroll horizontal** no documento.
+- **Sem scroll horizontal** em nenhuma das duas páginas.
 - A tabela de dados usa `div.table-container` com **scroll próprio** — exceção
   explicitamente permitida pela 1.4.10 para conteúdo que requer layout 2D.
+- A seção "Recursos" usa `grid-template-columns: repeat(auto-fit, minmax(min(300px,
+  100%), 1fr))`: o `min(300px, 100%)` garante que o trilho não estoure viewports
+  abaixo de 300px e empilha as colunas sem media query.
 
 ## 5. Formulário (3.3.1 / 3.3.3 / 4.1.3 / 2.4.3)
 
@@ -131,6 +168,7 @@ A bateria automatizada está empacotada na skill **`auditoria-a11y`**
 ```bash
 # instala deps efêmeras + Chromium, depois:
 node audit.mjs ./index.html
+node audit.mjs ./glossario.html
 
 # contraste avulso de um par de cores:
 node contrast.mjs "#005a9c" "#ffffff"
