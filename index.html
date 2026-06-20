@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 
+    <!--
         WCAG 2.2 - Critério 2.4.1 (Bypass Blocks)
-        O 'Skip Link' permite que usuários de teclado pulem a navegação repetitiva 
+        O 'Skip Link' permite que usuários de teclado pulem a navegação repetitiva
         e vão direto para o conteúdo principal.
     -->
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
     <!--
-        O elemento <header> como filho direto do <body> já possui a role implícita 
-        "banner" (ARIA in HTML). Adicionar role="banner" seria redundante e viola 
+        O elemento <header> como filho direto do <body> já possui a role implícita
+        "banner" (ARIA in HTML). Adicionar role="banner" seria redundante e viola
         a Regra 1 de ARIA: "Prefira semântica nativa".
     -->
     <header class="main-header">
@@ -39,7 +39,7 @@
     </header>
 
     <main id="main-content" tabindex="-1">
-        <!-- 
+        <!--
             WCAG 2.2 - Critério 1.3.1 (Info and Relationships)
             O <h1> é o título principal e deve ser único por página, definindo o tema central.
         -->
@@ -47,8 +47,8 @@
             <div class="container">
                 <h1 id="hero-title">Por que Acessibilidade é o seu Superpoder como Desenvolvedor?</h1>
                 <p>
-                    Acessibilidade não é apenas uma lista de tarefas ou uma obrigação legal. É sobre design inclusivo. 
-                    Este template foi criado para ser um <strong>guia prático</strong>. Cada seção abaixo explica sua própria existência 
+                    Acessibilidade não é apenas uma lista de tarefas ou uma obrigação legal. É sobre design inclusivo.
+                    Este template foi criado para ser um <strong>guia prático</strong>. Cada seção abaixo explica sua própria existência
                     e como você pode aplicar esses conceitos para criar uma web mais justa e tecnicamente superior.
                 </p>
                 <div class="cta-group">
@@ -58,130 +58,27 @@
         </section>
 
         <!-- ======================================================
-             SEÇÃO: RECURSOS E REFERÊNCIAS
-             Layout em duas colunas com CSS Grid (auto-fit), que
-             empilha naturalmente em telas pequenas sem media query.
-             Critérios WCAG 2.2: 1.4.11 (Non-text Contrast, borda dos
-             cards ≥ 3:1) e 2.4.4 (Link Purpose).
-             ====================================================== -->
-        <section class="section-content recursos" aria-labelledby="recursos-heading">
-            <div class="container">
-                <h2 id="recursos-heading">Recursos para aprofundar</h2>
-                <p>
-                    Normas, leis e ferramentas para quem quer ir além do básico.
-                    Os links abaixo abrem em nova aba.
-                </p>
-                <div class="recursos-grid">
-                    <!--
-                        Cada coluna é um <article> independente (conteúdo
-                        autossuficiente), nomeado pelo seu próprio <h3>.
-                    -->
-                    <article aria-labelledby="normas-heading">
-                        <h3 id="normas-heading">Normas e legislação</h3>
-                        <ul class="link-list">
-                            <li>
-                                <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">
-                                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 (<abbr title="World Wide Web Consortium" lang="en">W3C</abbr>)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Diretrizes internacionais de acessibilidade web (em inglês).</span>
-                            </li>
-                            <li>
-                                <a href="https://www.w3c.br/traducoes/wcag/wcag22-pt-BR/" target="_blank" rel="noopener noreferrer">
-                                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 em português (<abbr title="World Wide Web Consortium" lang="en">W3C</abbr> Brasil)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Tradução oficial mantida pelo <abbr title="World Wide Web Consortium" lang="en">W3C</abbr> Brasil.</span>
-                            </li>
-                            <li>
-                                <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm" target="_blank" rel="noopener noreferrer">
-                                    Lei Brasileira de Inclusão (<abbr title="Lei Brasileira de Inclusão">LBI</abbr> 13.146/2015), Art. 63<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Estabelece a obrigatoriedade de acessibilidade em sites no Brasil.</span>
-                            </li>
-                            <li>
-                                <a href="https://cta.ifrs.edu.br/abnt-nbr-17225-2025-acessibilidade-em-conteudo-e-aplicacoes-web-requisitos/" target="_blank" rel="noopener noreferrer">
-                                    <abbr title="Associação Brasileira de Normas Técnicas">ABNT</abbr> <abbr title="Norma Brasileira">NBR</abbr> 17225/2025<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Primeira norma brasileira oficial de acessibilidade web (resumo técnico do <abbr title="Instituto Federal do Rio Grande do Sul">IFRS</abbr>).</span>
-                            </li>
-                            <li>
-                                <a href="https://emag.governoeletronico.gov.br/" target="_blank" rel="noopener noreferrer">
-                                    <abbr title="Modelo de Acessibilidade em Governo Eletrônico">eMAG</abbr><span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Modelo brasileiro de acessibilidade para sites governamentais.</span>
-                            </li>
-                        </ul>
-                    </article>
-                    <article aria-labelledby="ferramentas-heading">
-                        <h3 id="ferramentas-heading">Ferramentas de teste</h3>
-                        <ul class="link-list">
-                            <li>
-                                <a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer">
-                                    Axe DevTools (Deque)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Extensão de navegador para auditoria automática <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>.</span>
-                            </li>
-                            <li>
-                                <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">
-                                    <abbr title="Web Accessibility Evaluation Tool" lang="en">WAVE</abbr> (WebAIM)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Avaliador online visual de acessibilidade.</span>
-                            </li>
-                            <li>
-                                <a href="https://developer.chrome.com/docs/lighthouse/accessibility/" target="_blank" rel="noopener noreferrer">
-                                    Lighthouse (Chrome DevTools)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Auditoria integrada ao Chrome DevTools.</span>
-                            </li>
-                            <li>
-                                <a href="https://www.nvaccess.org/download/" target="_blank" rel="noopener noreferrer">
-                                    <abbr title="NonVisual Desktop Access" lang="en">NVDA</abbr> (leitor de tela gratuito)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Leitor de tela open-source para Windows.</span>
-                            </li>
-                            <li>
-                                <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">
-                                    Contrast Checker (WebAIM)<span class="sr-only"> (abre em nova aba)</span>
-                                    <span class="ext-icon" aria-hidden="true">↗</span>
-                                </a>
-                                <span class="link-desc">Verificador de contraste de cores conforme <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>.</span>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- ======================================================
              SEÇÃO: TEXTO E SEMÂNTICA
-             Critérios WCAG 2.2: 1.3.1 (Info and Relationships), 
+             Critérios WCAG 2.2: 1.3.1 (Info and Relationships),
              3.1.2 (Language of Parts)
              ====================================================== -->
         <section id="texto" class="section-content" aria-labelledby="texto-title">
             <div class="container">
                 <h2 id="texto-title">Hierarquia de Texto e Semântica</h2>
                 <p>
-                    O <abbr title="HyperText Markup Language" lang="en">HTML</abbr> semântico vai muito além 
-                    de simplesmente exibir texto na tela. Cada elemento carrega um <em>significado</em> que 
-                    tecnologias assistivas — como leitores de tela — utilizam para transmitir a estrutura 
+                    O <abbr title="HyperText Markup Language" lang="en">HTML</abbr> semântico vai muito além
+                    de simplesmente exibir texto na tela. Cada elemento carrega um <em>significado</em> que
+                    tecnologias assistivas — como leitores de tela — utilizam para transmitir a estrutura
                     e a intenção do conteúdo ao usuário.
                 </p>
 
                 <!-- Subseção: Hierarquia de Headings -->
                 <h3>Headings: a espinha dorsal da navegação</h3>
                 <p>
-                    Leitores de tela permitem que usuários naveguem por 
-                    <em lang="en">headings</em> (cabeçalhos) como se fossem um sumário interativo. 
-                    Por isso, a hierarquia deve ser rigorosa: nunca pule de 
-                    <code>&lt;h2&gt;</code> para <code>&lt;h4&gt;</code> sem passar pelo 
+                    Leitores de tela permitem que usuários naveguem por
+                    <em lang="en">headings</em> (cabeçalhos) como se fossem um sumário interativo.
+                    Por isso, a hierarquia deve ser rigorosa: nunca pule de
+                    <code>&lt;h2&gt;</code> para <code>&lt;h4&gt;</code> sem passar pelo
                     <code>&lt;h3&gt;</code>. Cada nível cria uma subdivisão lógica do conteúdo.
                 </p>
 
@@ -192,33 +89,38 @@
                 </p>
                 <ul>
                     <li>
-                        <strong>Importância:</strong> O elemento <code>&lt;strong&gt;</code> indica 
-                        que o conteúdo tem <strong>alta importância</strong>. Já o <code>&lt;b&gt;</code> 
+                        <strong>Importância:</strong> O elemento <code>&lt;strong&gt;</code> indica
+                        que o conteúdo tem <strong>alta importância</strong>. Já o <code>&lt;b&gt;</code>
                         apenas destaca visualmente, sem semântica adicional.
                     </li>
                     <li>
-                        <strong>Ênfase:</strong> O elemento <code>&lt;em&gt;</code> aplica 
-                        <em>ênfase vocal</em> — um leitor de tela pode alterar a entonação. 
+                        <strong>Ênfase:</strong> O elemento <code>&lt;em&gt;</code> aplica
+                        <em>ênfase vocal</em> — um leitor de tela pode alterar a entonação.
                         Já o <code>&lt;i&gt;</code> é apenas visual (itálico).
                     </li>
                     <li>
-                        <strong>Abreviações:</strong> Use <code>&lt;abbr&gt;</code> para expandir siglas. 
-                        Exemplo: a <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 
+                        <!--
+                            Primeira menção das siglas WCAG e W3C na página: por isso recebem
+                            <abbr title> aqui. Como o site é exemplo de si mesmo, esta é também a
+                            demonstração do próprio elemento. Nas menções seguintes usamos a sigla
+                            pura, para não repetir a expansão nem poluir a árvore de acessibilidade.
+                        -->
+                        <strong>Abreviações:</strong> Use <code>&lt;abbr&gt;</code> para expandir siglas.
+                        Exemplo: a <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>
                         é mantida pelo <abbr title="World Wide Web Consortium" lang="en">W3C</abbr>.
                     </li>
                     <li>
-                        <strong>Código:</strong> O elemento <code>&lt;code&gt;</code> identifica 
+                        <strong>Código:</strong> O elemento <code>&lt;code&gt;</code> identifica
                         fragmentos de código como <code>aria-label</code>.
                     </li>
                     <li>
-                        <strong>Datas:</strong> O elemento <code>&lt;time&gt;</code> fornece datas 
-                        legíveis por máquina: a 
-                        <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 
-                        foi publicada em 
+                        <strong>Datas:</strong> O elemento <code>&lt;time&gt;</code> fornece datas
+                        legíveis por máquina: a WCAG 2.2
+                        foi publicada em
                         <time datetime="2024-12-12">12 de dezembro de 2024</time>.
                     </li>
                     <li>
-                        <strong>Destaque:</strong> Use <code>&lt;mark&gt;</code> para 
+                        <strong>Destaque:</strong> Use <code>&lt;mark&gt;</code> para
                         <mark>destacar trechos relevantes</mark> em contexto, como resultados de busca.
                     </li>
                 </ul>
@@ -227,28 +129,27 @@
                 <h3>Citações e atribuição</h3>
                 <blockquote cite="https://www.w3.org/WAI/fundamentals/accessibility-intro/">
                     <p>
-                        <span lang="en">"The power of the Web is in its universality. Access by 
+                        <span lang="en">"The power of the Web is in its universality. Access by
                         everyone regardless of disability is an essential aspect."</span>
                     </p>
                 </blockquote>
                 <p>
-                    — <cite lang="en">Tim Berners-Lee</cite>, criador da 
+                    — <cite lang="en">Tim Berners-Lee</cite>, criador da
                     <span lang="en">World Wide Web</span>
                 </p>
                 <p>
-                    O elemento <code>&lt;blockquote&gt;</code> marca uma citação em bloco, enquanto 
-                    <code>&lt;cite&gt;</code> identifica o título de uma obra ou o nome da fonte. 
-                    O atributo <code>cite</code> (no elemento) fornece a 
-                    <abbr title="Uniform Resource Locator" lang="en">URL</abbr> da fonte 
+                    O elemento <code>&lt;blockquote&gt;</code> marca uma citação em bloco, enquanto
+                    <code>&lt;cite&gt;</code> identifica o título de uma obra ou o nome da fonte.
+                    O atributo <code>cite</code> (no elemento) fornece a
+                    <abbr title="Uniform Resource Locator" lang="en">URL</abbr> da fonte
                     para fins de rastreabilidade.
                 </p>
 
                 <!-- Subseção: Listas semânticas -->
                 <h3>Listas: estrutura que comunica</h3>
                 <p>
-                    Leitores de tela anunciam o tipo e o número de itens de uma lista, dando contexto 
-                    imediato ao usuário. Os quatro princípios da 
-                    <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 
+                    Leitores de tela anunciam o tipo e o número de itens de uma lista, dando contexto
+                    imediato ao usuário. Os quatro princípios da WCAG
                     formam o acrônimo <strong lang="en">POUR</strong>:
                 </p>
                 <ol>
@@ -260,7 +161,7 @@
 
                 <h3>Glossário de termos</h3>
                 <p>
-                    A lista de definições (<code>&lt;dl&gt;</code>) é ideal para glossários e 
+                    A lista de definições (<code>&lt;dl&gt;</code>) é ideal para glossários e
                     pares de termo-valor:
                 </p>
                 <dl class="glossary">
@@ -278,7 +179,7 @@
                     </div>
                     <div>
                         <dt><abbr title="Accessible Rich Internet Applications" lang="en">ARIA</abbr></dt>
-                        <dd>Conjunto de atributos que complementam o <abbr title="HyperText Markup Language" lang="en">HTML</abbr> para melhorar a acessibilidade de conteúdo dinâmico e componentes de interface customizados.</dd>
+                        <dd>Conjunto de atributos que complementam o HTML para melhorar a acessibilidade de conteúdo dinâmico e componentes de interface customizados.</dd>
                     </div>
                 </dl>
                 <!-- Esta é apenas uma amostra. O glossário completo vive em página própria. -->
@@ -299,7 +200,7 @@
             <div class="container">
                 <h2 id="midia-title">Mídia e Descrição de Imagens</h2>
                 <p>
-                    Imagens precisam de descrições textuais (<code>alt</code>) para que usuários cegos compreendam o contexto. 
+                    Imagens precisam de descrições textuais (<code>alt</code>) para que usuários cegos compreendam o contexto.
                     Se a imagem for apenas decorativa, o atributo <code>alt=""</code> deve ser usado para que o leitor de tela a ignore.
                 </p>
 
@@ -321,38 +222,38 @@
 
         <!-- ======================================================
              SEÇÃO: TABELAS
-             Critérios WCAG 2.2: 1.3.1 (Info and Relationships), 
+             Critérios WCAG 2.2: 1.3.1 (Info and Relationships),
              1.4.10 (Reflow)
              ====================================================== -->
         <section id="tabelas" class="section-content" aria-labelledby="tabelas-title">
             <div class="container">
                 <h2 id="tabelas-title">Tabelas de Dados Acessíveis</h2>
                 <p>
-                    Tabelas devem ser usadas <strong>exclusivamente para dados tabulares</strong>, nunca para 
-                    layout. O elemento <code>&lt;caption&gt;</code> dá nome à tabela (funcionando como 
-                    um título acessível), enquanto <code>&lt;th&gt;</code> com o atributo 
-                    <code>scope</code> associa cabeçalhos às células de dados — permitindo que leitores de 
+                    Tabelas devem ser usadas <strong>exclusivamente para dados tabulares</strong>, nunca para
+                    layout. O elemento <code>&lt;caption&gt;</code> dá nome à tabela (funcionando como
+                    um título acessível), enquanto <code>&lt;th&gt;</code> com o atributo
+                    <code>scope</code> associa cabeçalhos às células de dados — permitindo que leitores de
                     tela anunciem o cabeçalho relevante ao navegar entre células.
                 </p>
 
                 <h3>Estrutura recomendada</h3>
                 <p>
-                    Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> e opcionalmente 
-                    <code>&lt;tfoot&gt;</code> para agrupar semanticamente as linhas da tabela. 
-                    Cada cabeçalho de coluna recebe <code>scope="col"</code> e cada cabeçalho 
+                    Use <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> e opcionalmente
+                    <code>&lt;tfoot&gt;</code> para agrupar semanticamente as linhas da tabela.
+                    Cada cabeçalho de coluna recebe <code>scope="col"</code> e cada cabeçalho
                     de linha recebe <code>scope="row"</code>.
                 </p>
 
                 <!--
-                    O container com overflow-x: auto garante que a tabela 
+                    O container com overflow-x: auto garante que a tabela
                     seja acessível em telas pequenas sem quebrar o layout.
-                    WCAG 1.4.10 (Reflow) — Conteúdo que inerentemente requer 
-                    layout bidimensional (como tabelas) é uma exceção aceita, 
+                    WCAG 1.4.10 (Reflow) — Conteúdo que inerentemente requer
+                    layout bidimensional (como tabelas) é uma exceção aceita,
                     desde que o scroll seja possível.
                 -->
                 <div class="table-container">
                     <table>
-                        <caption>Critérios <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 implementados neste site</caption>
+                        <caption>Critérios WCAG 2.2 implementados neste site</caption>
                         <thead>
                             <tr>
                                 <th scope="col">Critério</th>
@@ -442,8 +343,8 @@
             <div class="container">
                 <h2 id="formularios-title">Interação e Formulários Acessíveis</h2>
                 <p>
-                    Formulários são pontos críticos de acessibilidade. Cada campo precisa de um <code>&lt;label&gt;</code> 
-                    associado via <code>id</code>. Grupos de campos relacionados devem ser envolvidos em um 
+                    Formulários são pontos críticos de acessibilidade. Cada campo precisa de um <code>&lt;label&gt;</code>
+                    associado via <code>id</code>. Grupos de campos relacionados devem ser envolvidos em um
                     <code>&lt;fieldset&gt;</code> com uma <code>&lt;legend&gt;</code>.
                 </p>
 
@@ -524,11 +425,118 @@
                 </form>
             </div>
         </section>
+
+        <!-- ======================================================
+             SEÇÃO: RECURSOS E REFERÊNCIAS
+             Posicionada ao fim do <main> como "próximos passos": depois de
+             ver os conceitos na prática, o usuário é convidado a aprofundar.
+             Layout em duas colunas com CSS Grid (auto-fit), que empilha
+             naturalmente em telas pequenas sem media query.
+             Critérios WCAG 2.2: 1.4.11 (Non-text Contrast, borda dos
+             cards ≥ 3:1) e 2.4.4 (Link Purpose).
+             ====================================================== -->
+        <section class="section-content recursos" aria-labelledby="recursos-heading">
+            <div class="container">
+                <h2 id="recursos-heading">Recursos para aprofundar</h2>
+                <p>
+                    Viu os conceitos na prática? Estes são os caminhos para ir além:
+                    normas e leis que regem a acessibilidade no Brasil e no mundo, e
+                    ferramentas para testar seus próprios projetos. Os links abaixo
+                    abrem em nova aba.
+                </p>
+                <div class="recursos-grid">
+                    <!--
+                        Cada coluna é um <article> independente (conteúdo
+                        autossuficiente), nomeado pelo seu próprio <h3>.
+                    -->
+                    <article aria-labelledby="normas-heading">
+                        <h3 id="normas-heading">Normas e legislação</h3>
+                        <ul class="link-list">
+                            <li>
+                                <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">
+                                    WCAG 2.2 (W3C)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Diretrizes internacionais de acessibilidade web (em inglês).</span>
+                            </li>
+                            <li>
+                                <a href="https://www.w3c.br/traducoes/wcag/wcag22-pt-BR/" target="_blank" rel="noopener noreferrer">
+                                    WCAG 2.2 em português (W3C Brasil)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Tradução oficial mantida pelo W3C Brasil.</span>
+                            </li>
+                            <li>
+                                <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm" target="_blank" rel="noopener noreferrer">
+                                    Lei Brasileira de Inclusão (<abbr title="Lei Brasileira de Inclusão">LBI</abbr> 13.146/2015), Art. 63<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Estabelece a obrigatoriedade de acessibilidade em sites no Brasil.</span>
+                            </li>
+                            <li>
+                                <a href="https://cta.ifrs.edu.br/abnt-nbr-17225-2025-acessibilidade-em-conteudo-e-aplicacoes-web-requisitos/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Associação Brasileira de Normas Técnicas">ABNT</abbr> <abbr title="Norma Brasileira">NBR</abbr> 17225/2025<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Primeira norma brasileira oficial de acessibilidade web (resumo técnico do <abbr title="Instituto Federal do Rio Grande do Sul">IFRS</abbr>).</span>
+                            </li>
+                            <li>
+                                <a href="https://emag.governoeletronico.gov.br/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Modelo de Acessibilidade em Governo Eletrônico">eMAG</abbr><span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Modelo brasileiro de acessibilidade para sites governamentais.</span>
+                            </li>
+                        </ul>
+                    </article>
+                    <article aria-labelledby="ferramentas-heading">
+                        <h3 id="ferramentas-heading">Ferramentas de teste</h3>
+                        <ul class="link-list">
+                            <li>
+                                <a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer">
+                                    Axe DevTools (Deque)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Extensão de navegador para auditoria automática WCAG.</span>
+                            </li>
+                            <li>
+                                <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="Web Accessibility Evaluation Tool" lang="en">WAVE</abbr> (WebAIM)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Avaliador online visual de acessibilidade.</span>
+                            </li>
+                            <li>
+                                <a href="https://developer.chrome.com/docs/lighthouse/accessibility/" target="_blank" rel="noopener noreferrer">
+                                    Lighthouse (Chrome DevTools)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Auditoria integrada ao Chrome DevTools.</span>
+                            </li>
+                            <li>
+                                <a href="https://www.nvaccess.org/download/" target="_blank" rel="noopener noreferrer">
+                                    <abbr title="NonVisual Desktop Access" lang="en">NVDA</abbr> (leitor de tela gratuito)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Leitor de tela open-source para Windows.</span>
+                            </li>
+                            <li>
+                                <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">
+                                    Contrast Checker (WebAIM)<span class="sr-only"> (abre em nova aba)</span>
+                                    <span class="ext-icon" aria-hidden="true">↗</span>
+                                </a>
+                                <span class="link-desc">Verificador de contraste de cores conforme WCAG.</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2026 - Criado com foco em acessibilidade (<abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> 2.2 AA).</p>
+            <p>&copy; 2026 - Criado com foco em acessibilidade (WCAG 2.2 AA).</p>
         </div>
     </footer>
 
