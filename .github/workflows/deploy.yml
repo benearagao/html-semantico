@@ -1,41 +1,76 @@
-name: Deploy GitHub Pages
+name: Deploy to Locaweb (FTP)
 
-# Publica o site automaticamente a cada push na branch main.
+# Publica em semantica.benearagao.com.br via FTP, mas SÓ depois que a
+# auditoria de acessibilidade (WCAG 2.2 AA) passar. Pull requests rodam
+# apenas a auditoria (sem deploy).
 on:
   push:
     branches: [main]
-  # Permite disparar manualmente pela aba Actions.
+  pull_request:
   workflow_dispatch:
 
-# Permissões necessárias para o deploy no GitHub Pages.
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Garante um deploy por vez, sem cancelar uma publicação em andamento.
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  deploy:
+  audit:
+    name: Auditoria de acessibilidade (WCAG 2.2 AA)
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Pages
-        uses: actions/configure-pages@v5
-
-      - name: Empacotar site (raiz do repositório)
-        uses: actions/upload-pages-artifact@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          path: .
+          node-version: '24'
 
-      - name: Publicar no GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Instalar dependências de teste
+        working-directory: tests
+        run: npm ci
+
+      - name: Instalar Chromium (Playwright)
+        working-directory: tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Servir o site estático (raiz do repositório)
+        run: |
+          python3 -m http.server 4321 --directory . &
+          npx --yes wait-on http://localhost:4321/
+
+      - name: Rodar suite (HTML + teclado + axe-core)
+        working-directory: tests
+        env:
+          BASE_URL: http://localhost:4321/
+        run: npm test
+
+  deploy:
+    name: FTP Upload para o subdomínio
+    runs-on: ubuntu-latest
+    needs: audit
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.benearagao.com.br
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Sobe a raiz do repositório, mas exclui tudo que não é o site.
+          local-dir: ./
+          # Pasta do subdomínio na Locaweb — confirme o caminho no painel.
+          server-dir: /public_html/semantica/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
+            **/tests/**
+            **/docs/**
+            **/.claude/**
+            **/*.md
+            **/.gitignore
+            **/.htmlvalidate.json
+            **/LICENSE
+            **/.DS_Store
+          log-level: standard

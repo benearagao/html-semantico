@@ -1,0 +1,89 @@
+# =========================================================
+# HTML Semântico & Acessível
+# Apache config para Locaweb (hospedagem compartilhada)
+# Servido em: https://semantica.benearagao.com.br
+# =========================================================
+
+# ----- Redirect HTTPS -----
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# ----- Compressão Gzip -----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/ld+json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ----- Cache de longa duração para assets imutáveis -----
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML: cache curto (1h) para refletir mudanças rapidamente
+  ExpiresByType text/html "access plus 1 hour"
+
+  # CSS/JS: 1 ano (cache busting via ?v= no link)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Imagens / ícones: 1 ano
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # XML (sitemap)
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType text/xml "access plus 1 day"
+</IfModule>
+
+# ----- Headers de segurança -----
+<IfModule mod_headers.c>
+  # Bloqueia MIME-sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Bloqueia iframe externo (clickjacking)
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy (Feature Policy)
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+
+  # HSTS — apenas se servido via HTTPS
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # Cache imutável para assets versionados (com ?v= na URL)
+  <FilesMatch "\.(css|js|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML não deve ser cacheado agressivamente
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ----- MIME types adicionais -----
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType application/ld+json .jsonld
+</IfModule>
+
+# ----- 404 customizado -----
+ErrorDocument 404 /index.html
+
+# ----- Negar acesso a arquivos sensíveis -----
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(md|sh|yml|yaml|json)$">
+  Require all denied
+</FilesMatch>

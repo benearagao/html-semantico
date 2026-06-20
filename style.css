@@ -611,6 +611,12 @@ button {
     margin-top: 0;
 }
 
+/* WCAG 1.4.3: o azul de link padrão não contrasta sobre o fundo #333.
+   Cor clara com contraste ~6:1; mantém o sublinhado como afordância. */
+.main-footer a {
+    color: #7db9ff;
+}
+
 /* =============================================
    ESTILOS: Botões (Target Size)
    WCAG 2.5.8 - Target Size (Minimum)
