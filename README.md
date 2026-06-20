@@ -1,4 +1,4 @@
-# A11y Toolkit
+# HTML Semântico & Acessível
 
 > Guia prático e auto-explicativo de HTML Semântico e Acessibilidade Web seguindo WCAG 2.2 AA.
 
