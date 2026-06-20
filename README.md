@@ -42,17 +42,9 @@ Cobertura: `html-validate` (markup), navegação por teclado (WCAG 2.1.x / 2.4.x
 
 ## Deploy
 
-Hospedado na **Locaweb** via FTP, com publicação automática pelo GitHub Actions (`.github/workflows/deploy.yml`):
+Publicação automática via **GitHub Actions**: cada push na `main` roda uma auditoria de acessibilidade (WCAG 2.2 AA) e **só publica o site se ela passar**.
 
-1. A cada push na `main`, roda o job **`audit`** (a suíte de testes acima).
-2. Só se a auditoria passar, o job **`deploy`** sobe os arquivos por FTP para o subdomínio.
-
-**Secrets necessários** (Settings → Secrets and variables → Actions):
-
-- `FTP_USERNAME` — usuário FTP da Locaweb
-- `FTP_PASSWORD` — senha FTP da Locaweb
-
-O subdomínio `semantica.benearagao.com.br` precisa estar criado no painel da Locaweb apontando para a pasta `server-dir` configurada no workflow (`/public_html/semantica/`). Cache, gzip e HSTS são configurados via `.htaccess`. Cache busting do CSS via `style.css?v=YYYYMMDD`.
+Vai forkar e hospedar a sua versão? O passo a passo (CI, secrets de FTP e configuração de hospedagem) está em [`docs/deploy.md`](docs/deploy.md).
 
 ## Autor
 
