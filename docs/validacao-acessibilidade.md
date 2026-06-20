@@ -2,7 +2,7 @@
 
 > Relatório do teste **real** (não apenas revisão estática) das páginas `index.html`
 > e `glossario.html`.
-> Data: **18/06/2026** · Padrão alvo: **WCAG 2.2 Nível AA**
+> Data: **20/06/2026** · Padrão alvo: **WCAG 2.2 Nível AA**
 
 Este documento registra o que foi efetivamente testado, com que ferramentas e quais
 resultados — para consulta futura e para deixar claro o que ainda depende de
@@ -51,6 +51,26 @@ não violação.
 > limitação do jsdom, que não computa layout/visibilidade. No Chromium real eles se
 > resolvem (cada página tem um `<main>` e um `<h1>` únicos e o contraste é calculado).
 
+### Revisão do uso de `<abbr title>` (20/06/2026)
+
+Não é um achado de ferramenta (o axe não acusa isso), mas uma decisão editorial de
+acessibilidade, registrada aqui para rastreabilidade:
+
+- **Duplicação eliminada.** Sete verbetes do glossário tinham a expansão tanto no
+  `title` do `<abbr>` quanto entre parênteses no texto visível (ex.: `<abbr
+  title="Web Content Accessibility Guidelines">WCAG</abbr> (Web Content
+  Accessibility Guidelines)`). Adotou-se o modelo de dicionário (**Caminho C**): o
+  `<dt>` fica só com a sigla em `<abbr>` e a `<dd>` abre com "Sigla de …", de modo que
+  a expansão é lida **uma vez**, visível a todos (inclusive teclado/baixa visão, que
+  não recebem o tooltip do `title`).
+- **Repetição reduzida no `index.html` (Caminho A).** O `<abbr title>` passou a marcar
+  apenas a **primeira** ocorrência de cada sigla na ordem do documento — que cai no
+  trecho que ensina o próprio elemento `<abbr>`. Demais menções usam a sigla pura.
+- **Nuance técnica:** na configuração padrão, NVDA/JAWS/VoiceOver **não** anunciam o
+  `title` do `<abbr>`; logo a duplicação audível real estava nos parênteses, não no
+  `title`. A mudança é mais sobre limpeza de DOM/árvore de acessibilidade e clareza
+  visual do que sobre eliminar fala repetida.
+
 ## 2. Contraste — calculado de verdade
 
 Antes o contraste fora estimado "no papel"; aqui foi recalculado por luminância
@@ -96,13 +116,14 @@ Navegação só por teclado (Tab/Shift+Tab/Enter), ordem real capturada pelo nav
 1. Skip link
 2–6. Nav: Texto · Mídia · Tabelas · Formulários · **Glossário**
 7. Começar a Aprender (CTA)
-8–12. Recursos — coluna "Normas": WCAG · WCAG pt-BR · LBI · NBR 17225 · eMAG
-13–17. Recursos — coluna "Ferramentas": Axe · WAVE · Lighthouse · NVDA · Contrast Checker
-18. Ver glossário completo (link inline)
-19. Nome · 20. E-mail · 21. Newsletter · 22. Enviar Mensagem
+8. Ver glossário completo (link inline)
+9. Nome · 10. E-mail · 11. Newsletter · 12. Enviar Mensagem
+13–17. Recursos — coluna "Normas": WCAG · WCAG pt-BR · LBI · NBR 17225 · eMAG
+18–22. Recursos — coluna "Ferramentas": Axe · WAVE · Lighthouse · NVDA · Contrast Checker
 
-A ordem de Tab segue a leitura: termina a coluna esquerda dos recursos antes de
-entrar na direita, como o critério 2.4.3 (Focus Order) espera.
+A seção "Recursos" foi reposicionada ao fim do `<main>` (depois do formulário),
+como "próximos passos". A ordem de Tab segue a leitura: termina a coluna esquerda
+dos recursos antes de entrar na direita, como o critério 2.4.3 (Focus Order) espera.
 
 **`glossario.html` — 17 elementos:**
 
